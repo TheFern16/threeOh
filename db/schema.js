@@ -14,14 +14,20 @@ var Artist = db.define('Artist', {
 });
 
 var Battles = db.define('Battles', {
-  battle: Sequelize.STRING
+  battleName: Sequelize.STRING,
+  redRapper: Sequelize.STRING,
+  blueRapper: Sequelize.STRING
 });
 
-Artist.belongsTo(Battles);
-Battles.hasMany(Artist);
 
+Battles.belongsTo(Artist);
+Artist.hasMany(Battles);
+
+
+Battles.sync();
 Artist.sync();
 
 module.exports = {
-  Artist: Artist
+  Artist: Artist,
+  Battles: Battles
 };
