@@ -21,7 +21,6 @@ var Battles = db.define('Battles', {
 
 
 Battles.belongsTo(Artist);
-Artist.hasMany(Battles);
 
 
 Battles.sync();
