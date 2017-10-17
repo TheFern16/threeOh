@@ -13,6 +13,13 @@ var Artist = db.define('Artist', {
   artistName: Sequelize.STRING
 });
 
+var Battles = db.define('Battles', {
+  battle: Sequelize.STRING
+});
+
+Artist.belongsTo(Battles);
+Battles.hasMany(Artist);
+
 Artist.sync();
 
 module.exports = {
