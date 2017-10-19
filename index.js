@@ -27,6 +27,20 @@ app.get('/api/battles', (req, res) => {
     });
 });
 
+app.post('/api/battles', (req, res) => {
+  Schema.Battles.findOrCreate({ where : { battleName: req.body.battleName }})
+    .spread((user, created) => {
+      Schema.Battles.create({
+        battleName: req.body.battleName,
+        redRapper: req.body.redRapper,
+        blueRapper: req.body.blueRapper
+      })
+      .then((result) => {
+        res.sendStatus(201);
+      });
+    });
+})
+
 
 
 app.listen(port, () => {
