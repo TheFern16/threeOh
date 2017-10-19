@@ -13,13 +13,21 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
+app.post('/api/artists', (req, res) => {
+  Schema.Artist.findOrCreate({ where: { artistName: req.body.username }})
+    .spread((user, created) => {
+      res.sendStatus(created ? 201 : 200);
+    });
+});
+
 app.get('/api/battles', (req, res) => {
   Schema.Battles.findAll()
     .then((result) => {
-      console.log(result, 'hello result')
       res.json(result);
     });
 });
+
+
 
 app.listen(port, () => {
   console.log(`I am listening to port ${port}`);
