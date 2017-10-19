@@ -19,12 +19,8 @@ var Battles = db.define('Battles', {
   blueRapper: Sequelize.STRING
 });
 
-
-Battles.belongsTo(Artist);
-
-
-Battles.sync();
 Artist.sync();
+Battles.sync();
 
 module.exports = {
   Artist: Artist,

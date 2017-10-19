@@ -13,12 +13,13 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-// app.get('/api/battles', (req, res) => {
-//   Schema.Battles.findAll()
-//     .then((result) => {
-//       res.json(result);
-//     });
-// });
+app.get('/api/battles', (req, res) => {
+  Schema.Battles.findAll()
+    .then((result) => {
+      console.log(result, 'hello result')
+      res.json(result);
+    });
+});
 
 app.listen(port, () => {
   console.log(`I am listening to port ${port}`);
